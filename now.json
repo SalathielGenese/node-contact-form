@@ -2,6 +2,11 @@
   "version": 2,
   "name": "dhavalveera",
   "alias": "dhavalveera.macrocephal.cloud",
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
   "builds": [
     {
       "src": "index.js",
