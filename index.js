@@ -12,11 +12,11 @@ app.post( '/api/contact/email', async ( request, response ) =>
 {
     const { to, html, subject } = request.body;
 
-    email( await transport(), { to, html, subject } ).then( response =>
+    email( await transport(), { to, html, subject } ).then( status =>
     {
         response.status( 201 ).json({
-            content: response,
             status: 'success',
+            content: status,
         });
     }).catch( error =>
     {
