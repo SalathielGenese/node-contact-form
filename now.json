@@ -1,0 +1,61 @@
+{
+  "version": 2,
+  "name": "dhavalveera",
+  "alias": "dhavalveera.macrocephal.cloud",
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "config": {
+        "maxLambdaSize": "15mb"
+      },
+      "use": "@now/node"
+    },
+    {
+      "src": "**/*.html",
+      "config": {
+        "maxLambdaSize": "15mb"
+      },
+      "use": "@now/html-minifier"
+    },
+    {
+      "src": "js/**/*.js",
+      "config": {
+        "maxLambdaSize": "15mb"
+      },
+      "use": "@now/html-minifier"
+    },
+    {
+      "src": "css/**/*.css",
+      "config": {
+        "maxLambdaSize": "15mb"
+      },
+      "use": "@now/html-minifier"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/js",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/css",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/api",
+      "dest": "/index.html"
+    },
+    {
+      "dest": "/index.html",
+      "src": "/api/-"
+    },
+    {
+      "dest": "/index.html",
+      "src": "/api/-/contact"
+    }
+  ]
+}
