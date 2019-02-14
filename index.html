@@ -8,7 +8,30 @@
     <title>Contact Form</title>
 </head>
 <body>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi praesentium provident laboriosam inventore exercitationem quibusdam? Provident omnis eius totam dignissimos beatae, consequatur similique porro velit, magni possimus reiciendis nisi pariatur.
+    <form action="/api/contact/email" method="POST">
+        <div>
+            <label for="contact-form:to">
+                Email
+            </label>
+            <input name="to" required type="email" id="contact-form:to">
+        </div>
+        <div>
+            <label for="contact-form:subject">
+                Subject
+            </label>
+            <input name="subject" required type="text" id="contact-form:subject">
+        </div>
+        <div>
+            <label for="contact-form:html">
+                Content
+            </label>
+            <textarea name="content" required id="contact-form:html"></textarea>
+        </div>
+        <hr>
+        <button type="submit">
+            Submit
+        </button>
+    </form>
     <script src="/js/index.js"></script>
 </body>
 </html>
