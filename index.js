@@ -50,7 +50,7 @@ app.use( async ( request, response, next ) =>
 
 
 
-async function email( transport, { to, from = process.env.fROM || process.env.EMAIL, html, subject })
+async function email( transport, { to, from = process.env.FROM || process.env.EMAIL, html, subject })
 {
     return new Promise( ( resolve, reject ) =>
     {
