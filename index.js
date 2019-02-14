@@ -1,5 +1,5 @@
-const { promises: fs } = require( 'fs' );
 const express = require('express');
+const fs = require( 'fs' );
 
 
 
@@ -31,7 +31,7 @@ app.post( '/api/contact/email', async ( request, response ) =>
 app.use( async ( request, response, next ) =>
 {
     if ( /\.(js|css|html|jpg|png|ico|)$/.test( request.path )
-    && ( await fs.stat( `${ __dirname }${ request.path }` ) ).isFile() )
+    && ( fs.statSync( `${ __dirname }${ request.path }` ) ).isFile() )
     {
         return response.sendFile( `${ __dirname }${ request.path }` );
     }
