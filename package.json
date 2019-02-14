@@ -5,7 +5,7 @@
   "author": "SalathielGenese <salathielgenese@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "deploy": "node build-404.js && now && now alias"
+    "deploy": "now && now alias"
   },
   "dependencies": {
     "express": "^4.16.4",
