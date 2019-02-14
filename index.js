@@ -4,6 +4,7 @@ const fs = require( 'fs' );
 
 
 
+let transporter;
 const app = express();
 app.use( express.json() );
 app.use( express.urlencoded({ extended: true }) );
@@ -12,7 +13,8 @@ app.post( '/api/contact/email', async ( request, response ) =>
 {
     const { to, html, subject } = request.body;
 
-    email( await transport(), { to, html, subject } ).then( status =>
+    transporter = transporter || await transport();
+    email( transporter, { to, html, subject } ).then( status =>
     {
         response.status( 201 ).json({
             status: 'success',
@@ -50,7 +52,7 @@ app.use( async ( request, response, next ) =>
 
 
 
-async function email( transport, { to, from = process.env.EMAIL, html, subject })
+async function email( transport, { to, from = process.env.email, html, subject })
 {
     console.log({ to, from, html, subject});
 
@@ -63,7 +65,7 @@ async function email( transport, { to, from = process.env.EMAIL, html, subject }
     });
 }
 
-async function transport({ user = process.env.EMAIL, pass = process.env.EMAIL_PASSWORD } = {})
+async function transport({ user = process.env.email, pass = process.env.email_password } = {})
 {
     return nodemailer.createTransport({
         auth : { user, pass },
