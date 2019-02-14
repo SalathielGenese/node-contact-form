@@ -33,10 +33,16 @@ app.post( '/api/contact/email', async ( request, response ) =>
 
 app.use( async ( request, response, next ) =>
 {
-    if ( /\.(js|css|html|jpg|png|ico|)$/.test( request.path )
-    && ( fs.statSync( `${ __dirname }${ request.path }` ) ).isFile() )
+    try {
+        if ( /\.(js|css|html|jpg|png|ico|)$/.test( request.path )
+            && ( fs.statSync( `${ __dirname }${ request.path }` ) ).isFile() )
+        {
+            return response.sendFile( `${ __dirname }${ request.path }` );
+        }
+    }
+    catch ( error )
     {
-        return response.sendFile( `${ __dirname }${ request.path }` );
+        console.error( error );
     }
 
     response.status( 404 ).sendFile( `${ __dirname }/index.html` );
