@@ -34,6 +34,10 @@ let dest = now.routes.map( route => route.dest )[ 0 ];
     ).then( listableDirectories => listableDirectories.filter( directory => directory ) );
 }).then( async listableDirectories =>
 {
-    now.routes.push( ...listableDirectories.map( directory => ({ dest, src: `/${ directory }` }) ) );
+    now.routes.push( ...listableDirectories.map( directory =>
+        ({ dest, src: `/${ directory }` }) ) );
+    now.routes = now.routes.filter( ( route, index, routes ) =>
+            index === routes.findIndex( ({ src }) => src === route.src) );
+
     await fs.writeFile( './now.json', JSON.stringify( now, void 0, 2 ) );
 });
