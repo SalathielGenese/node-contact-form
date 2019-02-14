@@ -8,6 +8,7 @@
     "deploy": "node build-404.js && now && now alias"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "nodemailer": "^5.1.1"
   }
 }
