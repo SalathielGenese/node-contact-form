@@ -50,8 +50,10 @@ app.use( async ( request, response, next ) =>
 
 
 
-async function email( transport, { to, from = process.env.FROM || process.env.EMAIL, html, subject })
+async function email( transport, { to, from = process.env.EMAIL, html, subject })
 {
+    console.log({ to, from, html, subject});
+
     return new Promise( ( resolve, reject ) =>
     {
         transport.sendMail(
