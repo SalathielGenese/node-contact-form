@@ -24,6 +24,7 @@ app.post( '/api/contact/email', async ( request, response ) =>
         response.status( status ).json({
             status: 'error',
             code: error.code,
+            body: request.body,
             message: error.message,
             response: error.responseCode,
         });
