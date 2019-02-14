@@ -4,7 +4,9 @@
   "alias": "dhavalveera.macrocephal.cloud",
   "build": {
     "env": {
-      "NODE_ENV": "production"
+      "email": "@email",
+      "NODE_ENV": "production",
+      "email_password": "@email_password"
     }
   },
   "builds": [
